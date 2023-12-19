@@ -23,24 +23,15 @@ class UserController {
   }
 
   async updateUser(req, res) {
-    const {
-      id,
-      login,
-      password,
-      name,
-      surname,
-      info,
-      avatar,
-      favourites,
-      admin,
-    } = req.body;
+    const { id, login, password, name, surname, info, favorites, admin } =
+      req.body;
     console.log("Оновлення користувача з ID:", id);
 
     // Додайте виведення в консоль для відлагодження отриманих даних
     console.log("Отримані дані:", req.body);
     const user = await db.query(
-      "UPDATE users SET login = $1, password = $2, name = $3, surname = $4, info = $5, avatar = $6, favourites = $7, admin = $8 WHERE id = $9 RETURNING *",
-      [login, password, name, surname, info, avatar, favourites, admin, id],
+      "UPDATE users SET login = $1, password = $2, name = $3, surname = $4, info = $5, favorites = $6, admin = $7 WHERE id = $8 RETURNING *",
+      [login, password, name, surname, info, favorites, admin, id],
     );
     res.json(user.rows[0]);
   }
