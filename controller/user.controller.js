@@ -3,10 +3,11 @@ const db = require("../db");
 class UserController {
   async createUser(req, res) {
     const { login, password, admin } = req.body;
+    const favorites = [];
     console.log(login, password, admin);
     const newUser = await db.query(
-      "INSERT INTO users (login, password, admin) values ($1, $2, $3) RETURNING *",
-      [login, password, admin],
+      "INSERT INTO users (login, password, admin, favorites) values ($1, $2, $3, $4) RETURNING *",
+      [login, password, admin, favorites],
     );
     res.json(newUser.rows[0]);
   }

@@ -40,6 +40,12 @@ class MusicController {
     const music = await db.query("DELETE FROM music WHERE id = $1", [id]);
     res.json(music.rows[0]);
   }
+
+  async deleteMusicByUser(req, res) {
+    const id = req.params.id;
+    const music = await db.query(`DELETE FROM music WHERE "user" = $1`, [id]);
+    res.json(music.rows[0]);
+  }
 }
 
 module.exports = new MusicController();

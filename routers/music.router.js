@@ -7,5 +7,6 @@ router.get("/music", musicController.getMusic);
 router.get("/music/:id", musicController.getOneMusic);
 router.put("/music", musicController.updateMusic);
 router.delete("/music/:id", musicController.deleteMusic);
+router.delete("/musics/:id", musicController.deleteMusicByUser);
 
 module.exports = router;
