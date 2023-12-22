@@ -11,4 +11,8 @@ app.use(express.json());
 app.use("/api", userRouter);
 app.use("/api", musicRouter);
 
+app.get("/", (req, res) => {
+  res.end("<h1>Home page</h1>");
+});
+
 app.listen(PORT, () => console.log(`server started on post ${PORT}`));
