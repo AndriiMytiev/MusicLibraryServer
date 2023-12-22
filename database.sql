@@ -5,7 +5,6 @@ create TABLE users(
     name VARCHAR(50),
     surname VARCHAR(50),
     info TEXT,
-    avatar TEXT,
     favourites INTEGER[],
     admin BOOLEAN,
 )
